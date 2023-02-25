@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<nav class="p-3 bg-dark navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container fluid">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="navbar-brand d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <i class="fa-solid fa-cloud-sun-rain" style="font-size: 1.7em;"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/">Start</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/fulldata">Wszystkie dane</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container container-xx">
+    <div class="row">
+        <div class="col-lg-12 mb-4 ">
+            <div class="card mb-4">
+                <div class="card-body fulldta-table ">
+                    <h5 class="card-title text-primary"> Wszystkie dane</h5>
+                    <table class="table ">
+                        <tr>
+                            {% for col in column_names %}
+                            <th>{{col}}</th>
+                            {% endfor %}
+                        </tr>
+                        {% for row in row_data %}
+                        <tr>
+                            {% for col, row_ in zip(column_names, row) %}
+                            {% if col == link_column %}
+                            <td>
+                                <button type="submit" value={{ row_ }} name="person_id" form="patient_form" class="patient_button">
+                                    {{ row_ }}
+                                </button>
+                            </td>
+                            {% else %}
+                            <td>{{row_}}</td>
+                            {% endif %}
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    
+                    </table>
+                </div>                      
+        </div>
+     
+     
+    </div>
+</div>
+
+{% endblock %}

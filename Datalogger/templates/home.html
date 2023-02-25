@@ -1,0 +1,330 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<nav class="p-3 bg-dark navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container fluid">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="navbar-brand d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <i class="fa-solid fa-cloud-sun-rain" style="font-size: 1.7em;"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/">Start</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/fulldata">Wszystkie dane</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container flex-grow-1 container-xx" id="maincoitainer">
+  <div class="row" id="lastweatherrow">
+    <div class="col-lg-4 mb-2 order-0">
+        <div class="card mb-2 first-card">
+            <div class="card-body ">
+                <h5 class="card-title text-primary"> Ostatnie dane</h5>
+                <div class="row">
+                <div class="col-lg-6 mb-2 ">
+                  <span class="text-primary"id="lasttemp">6°C</span>
+                </div>
+                <div class="col-lg-6 mb-2 ">
+                  <span id="lastimg"></span>
+                  <span id="lastdesc"></span>
+                </div></div>
+            </div>
+        </div> 
+      </div>  
+      <div class="col-lg-4 mb-2">
+        <div class="card ">
+            <div class="card-body ">
+                  <table class="table">                   
+                    <tbody>
+                      <tr>                           
+                        <td> <i class="fa-solid fa-temperature-high"></i> Max/min temperatura</td>
+                        <td><span id="lastminmaxtemp"></span></td>
+                      </tr>
+                      <tr>                           
+                        <td> <i class="fa-solid fa-droplet"></i> Wilgotność</td>
+                        <td><span id="lasthumidity"></span></td>
+                      </tr>
+                      <tr>                           
+                        <td> <i class="fa-solid fa-arrows-down-to-line"></i> Ciśnienie</td>
+                        <td><span id="lastpressure"></span></td>
+                      </tr>
+                      <tr>                           
+                        <td><i class="fa-solid fa-eye"></i> Widoczność</td>
+                        <td><span id="lastvisibility"></span></td>
+                      </tr>
+                    </tbody>
+                  </table  
+                </div></div></div></div>
+                <div class="col-lg-4 mb-2">
+                  <div class="card ">
+            <div class="card-body ">
+                  <table class="table">                   
+                    <tbody>
+                      <tr>                           
+                        <td><i class="fa-solid fa-temperature-low"></i> Temperatura odczuwalna</td>
+                        <td><span id="lasttempfeelslike"></span></td>
+                      </tr>
+                      <tr>                           
+                        <td> <i class="fa-solid fa-wind"></i> Prędkość wiatru</td>
+                        <td><span id="lastwindspeed"></span></td>
+                      </tr>
+                      <tr>                           
+                        <td> <i class="fa-solid fa-wind"></i> Podmuch wiatru</td>
+                        <td><span id="lastwindgust"></span></td>
+                      </tr>
+                      <tr>                           
+                        <td> <i class="fa-solid fa-location-arrow"></i> Kierunek wiatru</td>
+                        <td><span id="lastwinddeg"></span></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table  
+                </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="row" id="temptopdf">
+        <div class="col-lg-8 mb-2 order-0">
+            <div class="card mb-2">
+                <div class="card-body ">
+                    <h5 class="card-title text-primary"> Temperatura</h5>
+                    <div>
+                        <canvas id="temp"></canvas>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-2 order-1 ">
+            <div class="card mb-2">
+                <div class="card-body ">
+                    <table class="table">
+                        <thead>
+                          <tr>                           
+                            <th scope="col">Wskaźnik</th>
+                            <th scope="col">Wynik</th>                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>                           
+                            <td><h6 class="card-title text-primary"> Średnia temperatura</h6></td>
+                            <td><span id="fullavgtemp"></span></td>
+                          </tr>
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Maksymalna temperatura</h6></td>
+                            <td><span id="fullmaxtemp"></span></td>
+                          </tr>
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Minimalna temperatura</h6></td>
+                            <td> <span id="fulmintemp"></span></td>
+                          </tr>  
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Mediana</h6></td>
+                            <td><span id="fullmedtem"></span></td>
+                          </tr> 
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Średnia temperatura odczuwalna</h6></td>
+                            <td><span id="fullavgfeeltemp"></span></td>
+                          </tr>
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Maksymalna temperatura odczuwalna</h6></td>
+                            <td><span id="fullmaxfeeltemp"></span></td>
+                          </tr>
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Minimalna temperatura odczuwalna</h6></td>
+                            <td><span id="fullminfeeltemp"></span></td>
+                          </tr>                             
+                        </tbody>
+                      </table>                      
+                </div>
+            </div>
+        </div>
+    </div>
+  
+  <div class="row" id="histtemp">
+    <div class="col-lg-6 mb-2 order-0">
+      <div class="card mb-4">
+          <div class="card-body">
+              <h5 class="card-title text-primary"> histogram tempratury</h5>
+              <div>
+                  <canvas id="histtempx"></canvas>
+              </div> 
+                                                 
+          </div>
+      </div>
+    </div>
+    <div class="col-lg-6 mb-2 order-1">
+      <div class="card mb-4">
+          <div class="card-body">
+              <h5 class="card-title text-primary"> histogram temperatury odczuwalnej</h5>
+              <div>
+                  <canvas id="histtempfeelslike"></canvas>
+              </div>
+                                            
+          </div>
+      </div>
+    </div>
+  </div> 
+    <div class="row">
+      <div class="col-lg-8 mb-2 order-0">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title text-primary"> Wiatr</h5>
+                <div>
+                    <canvas id="wind"></canvas>
+                </div>                                  
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-2 order-1 ">
+            <div class="card mb-2">
+                <div class="card-body ">   
+                    
+                    
+                    <table class="table ">
+                        <thead>
+                          <tr>                           
+                            <th scope="col">Wskaźnik</th>
+                            <th scope="col">Wynik</th>                           
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>                           
+                            <td><h6 class="card-title text-primary"> Średnia prędkość wiatru</h6></td>
+                            <td><span id="fullavgwindspeed"></span></td>
+                          </tr>
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Maksymalna prędkość wiatru</h6></td>
+                            <td><span id="fullmaxwindspeed"></span></td>
+                          </tr>
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Minimalna prędkość wiatru</h6></td>
+                            <td> <span id="fulminwindspeed"></span></td>
+                          </tr>  
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Mediana</h6></td>
+                            <td><span id="fullmedwindspeed"></span></td>
+                          </tr>
+                          <tr>                           
+                            <td><h6 class="card-title text-primary"> Średni podmuch wiatru</h6></td>
+                            <td><span id="fullavgwindgust"></span></td>
+                          </tr>
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Maksymalny podmuch wiatru</h6></td>
+                            <td><span id="fullmaxwindgust"></span></td>
+                          </tr>
+                          <tr>                            
+                            <td><h6 class="card-title text-primary"> Minimalnu podmuch wiatru</h6></td>
+                            <td> <span id="fullminwindgust"></span></td>
+                          </tr> 
+                                                    
+                        </tbody>
+                      </table>                       
+                </div>
+            </div>
+        </div> 
+    </div>
+    <div class="row" id="histwind">
+      <div class="col-lg-6 mb-2 order-0">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title text-primary"> histogram prędkości wiatru</h5>
+                <div>
+                    <canvas id="histwindspeed"></canvas>
+                </div> 
+                                                   
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-2 order-1">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title text-primary"> histogram podmuchu wiatu</h5>
+                <div>
+                    <canvas id="histwindgust"></canvas>
+                </div>
+                                              
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="">
+      <div class="col-lg-6 mb-2 order-0">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title text-primary"> Ciśnienie</h5>
+                <div>
+                    <canvas id="pressure"></canvas>
+                </div> 
+                <table class="table ">
+                  <thead>
+                    <tr>                           
+                      <th scope="col">Wskaźnik</th>
+                      <th scope="col">Wynik</th>                           
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>                           
+                      <td><h6 class="card-title text-primary"> Średnie ciśnienie</h6></td>
+                      <td><span id="fullavgpressure"></span></td>
+                    </tr>
+                    <tr>                            
+                      <td><h6 class="card-title text-primary"> Maksymalne ciśnienie</h6></td>
+                      <td><span id="fullmaxpressure"></span></td>
+                    </tr>
+                    <tr>                            
+                      <td><h6 class="card-title text-primary"> Minimalne ciśnienie</h6></td>
+                      <td> <span id="fullminpressure"></span></td>
+                    </tr>  
+                    
+                                              
+                  </tbody>  </table>                                   
+            </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-2 order-1">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title text-primary"> Wilgotność</h5>
+                <div>
+                    <canvas id="humidity"></canvas>
+                </div>
+                <table class="table ">
+                  <thead>
+                    <tr>                           
+                      <th scope="col">Wskaźnik</th>
+                      <th scope="col">Wynik</th>                           
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>                           
+                      <td><h6 class="card-title text-primary"> Średnia wilgotność</h6></td>
+                      <td><span id="fullavghumidity"></span></td>
+                    </tr>
+                    <tr>                            
+                      <td><h6 class="card-title text-primary"> Maksymalna wilgotność</h6></td>
+                      <td><span id="fullmaxhumidity"></span></td>
+                    </tr>
+                    <tr>                            
+                      <td><h6 class="card-title text-primary"> Minimalne wilgotność</h6></td>
+                      <td> <span id="fullminhumidity"></span></td>
+                    </tr>  
+                    
+                                              
+                  </tbody>  </table>                                
+            </div>
+        </div>
+      </div>
+    </div>
+    <script src="../static/weather.js"></script>
+</div>
+<button type="button" class="btn btn-dark static-btn" onClick=generatePdf()>Pobierz raport pdf</button>
+
+{% endblock %}
