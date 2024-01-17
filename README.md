@@ -35,7 +35,7 @@ $ python DataLogger.py
 
 ## Demo
 
-![Main Page 1](https://imgur.com/F10OCBm)
-![Main Page 2](https://imgur.com/rSMuEnt)
-![Main Page 3](https://imgur.com/3gXWzO6)
+![Main Page 1](https://imgur.com/F10OCBm.jpg)
+![Main Page 2](https://imgur.com/rSMuEnt.jpg)
+![Main Page 3](https://imgur.com/3gXWzO6.jpg)
 
