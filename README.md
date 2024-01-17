@@ -8,7 +8,7 @@ Simple weather data collecting project made using Python with Flask.
 
 - Collecting history weather data
 - History eather data visualisation
-
+- Generating a report
 
 ## Getting started
 
@@ -31,4 +31,11 @@ $ change api key to yours
 $ python DataAnalyzer.py
 $ python DataLogger.py 
 ```
+
+
+## Demo
+
+![Main Page 1](https://imgur.com/F10OCBm)
+![Main Page 2](https://imgur.com/rSMuEnt)
+![Main Page 3](https://imgur.com/3gXWzO6)
 
