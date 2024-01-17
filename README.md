@@ -7,7 +7,7 @@ Simple weather data collecting project made using Python with Flask.
 ## Features
 
 - Collecting history weather data
-- History eather data visualisation
+- History weather data visualisation with chart.js
 - Generating a report
 
 ## Getting started
