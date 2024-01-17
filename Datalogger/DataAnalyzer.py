@@ -23,7 +23,7 @@ def data():
         
         #temp
         temp=data['temp'].to_list()
-        feelsliketemp=data['feelsline'].to_list()        
+        feelsliketemp=data['feelslike'].to_list()        
         fullavgtemp=round(sum(temp)/len(temp),4)
         fullavgfeeltemp=round(sum(feelsliketemp)/len(feelsliketemp),4)
         fullmaxfeeltemp=round(max(feelsliketemp),4)
